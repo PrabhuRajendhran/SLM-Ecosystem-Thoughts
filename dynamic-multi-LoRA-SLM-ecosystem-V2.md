@@ -47,7 +47,7 @@ Train separate, parallel LoRA adapters on top of the Domain-Base Model.
 **Goal:** Serve all tasks efficiently on a single GPU using high-throughput, low-latency mechanisms.
 
 #### 3.1. Serving Layer Configuration
-* **Framework:** Use **vLLM** or **LoRAX**.
+* **Framework:** Use **vLLM** or **LoRAX** or **S-LoRA**.
 * **Setup:** The **Domain-Base Model** is loaded once. All trained LoRA adapters are loaded into a dedicated **VRAM cache** (the "Adapter Pool").
 * **Rationale:** Massive VRAM savings. Switching between small 100MB adapters is faster than loading separate 8GB models.
 
@@ -68,7 +68,7 @@ Train separate, parallel LoRA adapters on top of the Domain-Base Model.
 | Component | Tool / Framework | Purpose |
 | :--- | :--- | :--- |
 | **Training Acceleration** | `Unsloth` / `Axolotl` | Optimizes LoRA training speed and VRAM consumption for SLMs. |
-| **Real-Time Serving** | `vLLM` / `LoRAX` | Enables Heterogeneous Continuous Batching and dynamic LoRA swapping. |
+| **Real-Time Serving** | `vLLM` / `LoRAX` / `S-LoRA` | Enables Heterogeneous Continuous Batching and dynamic LoRA swapping. |
 | **Routing Logic** | `Semantic Router` | Fast, reliable front-end logic for mapping user intent to a specific adapter. |
 
 ---
